@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.ContactList-container {
+  width: 500px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.ContactListItem-container {
+  cursor: pointer;
+  border: 1px black solid;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  margin: 7px;
+  padding: 7px;
+}
+
+.ContactListItem-container:hover, .ContactListItem-container.selected {
+  color: white;
+  background-color: grey;
+}
+
+.ContactListItem-label {
+  text-align: right;
+  display: inline-block;
+  width: 100px;
+  margin-right: 5px;
+}
+
+.EditContact-label {
+  display: inline-block;
+  text-align: right;
+  width: 90px;
+  margin-right: 7px;
+}
+
+.EditContact-input {
+  font-size: 30px;
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
