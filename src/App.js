@@ -7,11 +7,6 @@ import { getContacts } from './actions';
 
 class App extends Component {
   
-  static mapStateToProps = (state) => {
-    
-    return {};
-  };
-  
   static mapDispatchToProps = (dispatch) => {
     
     return {
@@ -21,22 +16,6 @@ class App extends Component {
   
   constructor(props) {
     super(props);
-    
-    this.state = {
-      selectedIndex: 0,
-      contactList: [
-        {
-          id: 1,
-          name: 'Kurt Palmer',
-          phoneNumber: '(111) 111-1111'
-        },
-        {
-          id: 2,
-          name: 'Jane Watson',
-          phoneNumber: '(222) 222-2222'
-        }
-      ]
-    };
   }
   
   componentWillMount() {
@@ -44,6 +23,7 @@ class App extends Component {
   }
   
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -56,6 +36,6 @@ class App extends Component {
   }
 }
 
-const ConnectedApp = connect(App.mapStateToProps, App.mapDispatchToProps)(App);
+const ConnectedApp = connect(null, App.mapDispatchToProps)(App);
 
 export default ConnectedApp;
