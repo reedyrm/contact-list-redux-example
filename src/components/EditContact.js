@@ -5,7 +5,6 @@ class EditContact extends Component {
   
   _onContactUpdated = (propertyName, updatedValue) => {
     
-    console.log(`updatedValue: ${JSON.stringify(updatedValue)}`);
     const updatedContact = {
       ...this.props.contact
     };
@@ -19,6 +18,8 @@ class EditContact extends Component {
   
   render() {
     const { contact = {}} = this.props;
+    
+    console.log(`EditContact.contact: ${contact}`);
     
     return (
       <Fragment>

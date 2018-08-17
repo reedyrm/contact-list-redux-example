@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
+import Contacts from './containers/Contacts';
 import './App.css';
-import ContactList from './ContactList';
-import EditContact from './EditContact';
+import { getContacts } from './actions';
 
 class App extends Component {
+  
+  static mapStateToProps = (state) => {
+    
+    return {};
+  };
+  
+  static mapDispatchToProps = (dispatch) => {
+    
+    return {
+      getContacts: () => dispatch(getContacts())
+    };
+  };
   
   constructor(props) {
     super(props);
@@ -26,57 +39,23 @@ class App extends Component {
     };
   }
   
-  _onContactSelected = (contactId) => {
-    console.log(`contactId: ${contactId}`);
-    let selectedIndex;
-    let contactObject;
-    for(let index = 0; index < this.state.contactList.length; index++) {
-      contactObject = this.state.contactList[index];
-      
-      if(contactId === contactObject.id) {
-        selectedIndex = index;
-        break;
-      }
-    }
-    
-    
-    this.setState({
-      selectedContactId: contactId,
-      selectedIndex
-    });
-    
-  };
-  
-  _onContactUpdated = (updatedContact) => {
-    
-    const copiedContactList = [
-      ...this.state.contactList
-    ];
-  
-    copiedContactList[this.state.selectedIndex] = updatedContact;
-    
-    this.setState({
-      contactList: copiedContactList
-    });
-  };
+  componentWillMount() {
+    this.props.getContacts();
+  }
   
   render() {
-    const { contactList, selectedContactId, selectedIndex } = this.state;
-    
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Contact List</h1>
         </header>
-        <div>
-          <ContactList contactList={contactList} onContactSelected={this._onContactSelected} selectedContactId={selectedContactId}/>
-        </div>
-        <hr />
-        <EditContact contact={this.state.contactList[selectedIndex]} onUpdate={this._onContactUpdated} />
+        <Contacts />
       </div>
     );
   }
 }
 
-export default App;
+const ConnectedApp = connect(App.mapStateToProps, App.mapDispatchToProps)(App);
+
+export default ConnectedApp;
