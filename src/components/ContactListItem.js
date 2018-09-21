@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 class ContactListItem extends Component {
   
-  _onContactSelected = (contactId) => {
-    console.log(`_onContactSelected`);
+  handleContactSelected = (contactId) => {
+    console.log(`handleContactSelected`);
     if(this.props.onContactSelected) {
       this.props.onContactSelected(contactId);
     }
@@ -13,7 +13,7 @@ class ContactListItem extends Component {
   render() {
     const {contact, selectedContactId } = this.props;
     return (
-      <div className={`ContactListItem-container ${selectedContactId === contact.id ? 'selected' : ''}` } onClick={() => this._onContactSelected(contact.id)}>
+      <div className={`ContactListItem-container ${selectedContactId === contact.id ? 'selected' : ''}` } onClick={() => this.handleContactSelected(contact.id)}>
         <div>
           <span className={'ContactListItem-label'}>Name:</span>
           <span>{contact.name}</span>
